@@ -57,4 +57,4 @@ MongoClient.connect(uri,{useNewUrlParser:true, useUnifiedTopology: true },  func
 
 
 
-app.listen(port);
+app.listen(process.env.PORT || port);
