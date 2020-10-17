@@ -1,5 +1,5 @@
 const express = require('express')
-const port = 4000;
+const port = 5000;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
@@ -9,6 +9,9 @@ const app = express()
 app.use(bodyParser.json());
 app.use(cors());
 
+app.get('/', (req, res) => {
+    res.send('Server is running!')
+  })
 
 var uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-shard-00-00.gqyzv.mongodb.net:27017,cluster0-shard-00-01.gqyzv.mongodb.net:27017,cluster0-shard-00-02.gqyzv.mongodb.net:27017/${process.env.DB_NAME}?ssl=true&replicaSet=atlas-k1o8mv-shard-0&authSource=admin&retryWrites=true&w=majority`;
 MongoClient.connect(uri,{useNewUrlParser:true, useUnifiedTopology: true },  function(err, client) {
